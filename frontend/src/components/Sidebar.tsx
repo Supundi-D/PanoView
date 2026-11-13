@@ -12,11 +12,11 @@ import {
 
 const navigation = [
   { name: "Dashboard", path: "/", icon: LayoutDashboard },
-  // { name: "Video Upload", path: "/upload", icon: Video },
-  // { name: "Panoptic Results", path: "/panoptic", icon: Layers },
-  // { name: "Depth Estimation", path: "/depth", icon: ScanEye },
-  // { name: "Model Comparison", path: "/comparison", icon: GitCompare },
-  // { name: "Evaluation", path: "/evaluation", icon: ChartNoAxesCombined },
+  { name: "Video Upload", path: "/upload", icon: Video },
+  { name: "Panoptic Results", path: "/panoptic", icon: Layers },
+  { name: "Depth Estimation", path: "/depth", icon: ScanEye },
+  { name: "Model Comparison", path: "/comparison", icon: GitCompare },
+  { name: "Evaluation", path: "/evaluation", icon: ChartNoAxesCombined },
 ];
 
 export default function Sidebar() {
@@ -78,12 +78,12 @@ export default function Sidebar() {
       </nav>
 
       <div className="mt-auto border-t border-slate-800 pt-5">
-        <p className="text-xs text-slate-500">
+        {/* <p className="text-xs text-slate-500">
           FYP Research Prototype
-        </p>
-        <p className="text-xs text-slate-600 mt-1">
+        </p> */}
+        {/* <p className="text-xs text-slate-600 mt-1">
           Video Depth-Aware Segmentation
-        </p>
+        </p> */}
       </div>
     </aside>
   );
