@@ -21,15 +21,26 @@ const navigation = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 min-h-screen bg-[#0D1525] border-r border-slate-800 p-5 flex flex-col">
-
+<aside className="
+  fixed
+  top-0
+  left-0
+  z-50
+  w-64
+  h-screen
+  bg-[#0D1525]
+  p-5
+  flex
+  flex-col
+  overflow-y-auto
+">
       <div className="flex items-center gap-3 mb-10">
         {/* <div className="bg-blue-600 p-2 rounded-xl">
           <Car size={25} />
         </div> */}
 
         <div>
-          <h1 className="text-xl font-bold text-white">
+          <h1 className="text-l font-bold text-white">
             PanoView
           </h1>
           {/* <p className="text-xs text-slate-400">

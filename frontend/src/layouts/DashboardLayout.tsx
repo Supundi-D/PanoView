@@ -1,32 +1,75 @@
 
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Bell, CircleUserRound } from "lucide-react";
+import { Menu, X, Bell, CircleUserRound } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
 export default function DashboardLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-[#080D18] text-slate-100 flex">
+    <div className="min-h-screen w-full max-w-none overflow-x-hidden bg-[#080D18] text-white">
 
-      <Sidebar />
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block">
+        <Sidebar />
+      </div>
 
-      <main className="flex-1 min-w-0">
+      {/* Mobile Header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-40 h-16 bg-[#0D1525] flex items-center px-5 gap-4">
+        <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+          {sidebarOpen ? <X /> : <Menu />}
+        </button>
 
-        <header className="h-16 border-b border-slate-800 flex items-center justify-between px-8 bg-[#0D1525]">
-          <div>
-            <p className="text-sm text-slate-400">
-              PanoView / Workspace
-            </p>
+        <h1 className="font-bold text-lg">PanoView</h1>
+      </header>
+
+      {/* Mobile Sidebar */}
+      {sidebarOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-50 bg-black/70"
+          onClick={() => setSidebarOpen(false)}
+        >
+          <div
+            className="relative w-64 h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Sidebar />
+
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="absolute top-4 right-3 text-white"
+            >
+              <X />
+            </button>
           </div>
+        </div>
+      )}
 
+      {/* Main Content - Full Available Device Width */}
+      <main className="
+  min-h-screen
+  w-full
+  min-w-0
+  lg:ml-64
+  lg:w-[calc(100%-16rem)]
+  pt-16
+  lg:pt-0
+  border-0
+">
+
+        {/* Top Navigation */}
+        <header className="hidden lg:flex h-16 w-full items-center justify-end px-8 bg-[#0D1525]">
           <div className="flex items-center gap-5">
-            <Bell size={19} className="text-slate-400" />
-            <CircleUserRound size={23} className="text-blue-400" />
+            <Bell className="text-slate-400" size={20} />
+            <CircleUserRound className="text-blue-400" size={23} />
           </div>
         </header>
 
-        <div className="p-8">
+        {/* Page Content */}
+        <section className="w-full min-w-0 p-4 sm:p-6 lg:p-8">
           <Outlet />
-        </div>
+        </section>
 
       </main>
     </div>
