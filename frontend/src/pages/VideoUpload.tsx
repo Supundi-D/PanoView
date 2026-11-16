@@ -8,6 +8,9 @@ import {
   FileVideo,
   CheckCircle2,
 } from "lucide-react";
+import VideoDropzone from "../components/upload/VideoDropzone";
+import VideoPreview from "../components/upload/VideoPreview";
+import UploadProgress from "../components/upload/UploadProgress";
 
 const MAX_FILE_SIZE = 500 * 1024 * 1024;
 
